@@ -5,7 +5,7 @@
         <title>Remodel</title>
     </head>
     <body>
-        <h1>
+        <h1 class = "hi">
             Remodel YSWS
         </h1>
         <pi>
@@ -24,8 +24,38 @@
                 <li>Updated firmware to integrate with the mod</li>
                 <li>A journal detailing what ou did, in a journal.md</li>
                 <li>A README.md including a picture of your CAD rendering</li>
-        <image>
-            <img src = >
+        <div class = "print">
+            <img class = "base"src = /assets/base.png>
+            <img class = "rail" src = /assets/rail.png>
+            <img class = "tool" src = /assets/tool.png>
+            
+        </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const tool = document.querySelector('.tool');
+                    if (!tool) return;
+                    const print = tool.parentElement;
+                    let leftOffset = 0;
+                    // shorten the interval used later so there's no idle delay between movements
+                    const _setInterval = window.setInterval.bind(window);
+                    window.setInterval = function(fn, ms, ...args) {
+                        const newMs = (typeof ms === 'number' && ms > 0) ? Math.min(ms, 400) : 400;
+                        return _setInterval(fn, newMs, ...args);
+                    };
+                    // each time the tool's inline style changes (its transform), move the parent 300px to the left
+                    const observer = new MutationObserver(() => {
+                        leftOffset -= 300;
+                        print.style.transform = `translateX(${leftOffset}px)`;
+                    });
+                    observer.observe(tool, { attributes: true, attributeFilter: ['style'] });
+                    let moved = false;
+                    tool.style.transition = 'transform 0.4s ease';
+                    setInterval(() => {
+                        moved = !moved;
+                        tool.style.transform = `translateX(${moved ? 100 : 0}px)`;
+                    }, 2000);
+                });
+            </script>
     </body>
 
 </html>

@@ -7,8 +7,25 @@ body{
     color: rgb(253, 206, 119);
 
 }
-h1{
+.hi{
     text-align: center;
     font-size: 50px;
     
 }
+.base{
+    position:absolute;
+    x: 200px;
+    y: 200px;    
+
+}
+.rail{
+    position: absolute;
+    x: 200px;
+    y: 200px;
+}
+.tool{
+    position: absolute;
+    x: 000px;
+    y: 200px;
+}
+
