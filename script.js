@@ -19,14 +19,14 @@ function onHelpClick(element) {
     if (animating) return;
     animating = true;
     info.style.height = `${info.offsetHeight}px`;
-    info.style.height = `${0}px`;
+    info.style.height = `${10}px`;
     let currentY = 0;
     for (let loop = 0; loop < 8; loop++) {
-        tool.style.transform = `translate(300px, ${currentY}px)`;
+        tool.style.transform = `translate(327px, ${currentY}px)`;
         await sleep(duration);
         currentY -= 20;
         rail.style.transform = `translateY(${currentY}px)`;
-        tool.style.transform = `translate(300px, ${currentY}px)`;
+        tool.style.transform = `translate(327px, ${currentY}px)`;
         await sleep(duration);
 
         for (let i = 0; i <4; i++) {
@@ -37,7 +37,7 @@ function onHelpClick(element) {
         await sleep(duration);
 
         currentY -= 20;
-        tool.style.transform = `translate(0px, ${currentY}px)`;
+        tool.style.transform = `translate(40px, ${currentY}px)`;
         rail.style.transform = `translateY(${currentY}px)`;
         await sleep(duration);
 
