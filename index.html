@@ -1,9 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="eg">
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
         <link rel = "stylesheet" href = "styles.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <meta charset="utf-8">
@@ -22,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#" style="font-size: x-large; font-family: 'Pixelify Sans', sans-serif;">Reprint YSWS</a>
+                    <a class="nav-link active text-white" aria-current="page" href="#" style="font-size: x-large;">Reprint YSWS</a>
                     </li>
                 </ul>
                 </div>
@@ -49,65 +46,19 @@
                 <iframe class="info" src="remodel.html"width="750" scrolling="no" style="transform: translateY(-30vw) translateX(-10%); z-index: 0;"></iframe>
             </th>
             
+
+            <div class="content-holder bg-color">
+                <!--  -->
+            </div>
             
             <th class="bg-color" style="width:45%">
                 <div class="bg-color">
-                    <div class="phone options-box">
-                        <table>
-                        <th>
-                            <table style="font-size: small;">
-                                <th>
-                                    <tr>
-                                        <img src="assets\box-arrow-down.svg" style="width: 25px; stroke: white; fill: white;">
-                                        <p>28°C</p>
-                                    </tr>
-                                    <tr>
-                                        <img src="assets\ban.svg" style="width: 25px;">
-                                        <p>No filament loaded</p>
-                                    </tr>
-                                    <tr>
-                                        <img src="assets\fan.svg" style="width: 25px;">
-                                        <p>45%</p>
-                                    </tr>
-                                </th>
-
-                            </table>
-                        </th>
-                        <th>
-                            <table >
-                                <tr>
-                                    <th>Print Name</th>
-                                    <th>Size</th>
-                                    <th>Print</th>
-                                </tr>
-                                <tr>
-                                    <td>requirements.gcode</td>
-                                    <td>73KB</td>
-                                    <td><button class="rp-btn" onclick="onHelpClick(this)" id="requirements">Start Print</button></td>
-                                </tr>
-                                <tr>
-                                    <td>timeline.gcode</td>
-                                    <td>22KB</td>
-                                    <td><button class = "rp-btn" onclick="onHelpClick(this)" id="timeline">Start Print</button></td>
-                                </tr>
-                                <tr>
-                                    <td>ideas.gcode</td>
-                                    <td>31.4KB</td>
-                                    <td><button class = "rp-btn" onclick="onHelpClick(this)" id="ideas">Start Print</button></td>
-                                </tr>
-                                <tr>
-                                    <td>remodel.gcode</td>
-                                    <td>27.1KB</td>
-                                    <td><button class = "rp-btn" onclick="onHelpClick(this)" id="remodel">Start Print</button></td>
-                                </tr>
-                                <tr>
-                                    <td>test.gcode</td>
-                                    <td>34.3KB</td>
-                                    <td><button class = "rp-btn" onclick="onHelpClick(this)" id="cat">Start Print</button></td>
-                                </tr>
-                            </table>
-                        </th>
-                        </table>
+                    <div class="phone options-box">                    
+                        <button class = "rp-btn " onclick="onHelpClick(this)" id="requirements">REQUIREMENTS</button>
+                        <button class = "rp-btn" onclick="onHelpClick(this)" id="timeline">TIMELINE</button>
+                        <button class = "rp-btn" onclick="onHelpClick(this)" id="ideas">IDEAS</button>
+                        <button class = "rp-btn" onclick="onHelpClick(this)" id="remodel">What is a remodel?</button>
+                        <button class = "rp-btn" onclick="onHelpClick(this)" id="cat">test</button>
                     </div>
                 </div>
             </th>
