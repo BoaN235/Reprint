@@ -34,11 +34,12 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-autoprefixer
 exclude:
   - Gemfile
   - Gemfile.lock
 
 collections:
   printers:
+    output: true
+  cat:
     output: true

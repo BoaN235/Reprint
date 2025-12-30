@@ -1,6 +1,6 @@
 <div>
-{% if printers %}
-  {% for printer in printers %}
+{% if site.printers and site.printers.size > 0 %}
+  {% for printer in site.printers %}
     <article class="printer-preview">
       <a href="{{ printer.url | relative_url }}">
         <h2>{{ printer.title }}</h2>
@@ -13,6 +13,4 @@
 {% else %}
   <p>No printers found.</p>
 {% endif %}
-
-
 </div>
