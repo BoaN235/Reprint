@@ -12,4 +12,6 @@ grid-row-gap: 0px;
   scrollbar-width: none;     /* Firefox */} /* Main content spans columns 2–5 */
 .div2::-webkit-scrollbar {
   display: none;  }
-.div3 { grid-area: 1 / 6 / 6 / 7; } /* Optional right panel if needed */
+.div3 { grid-area: 1 / 6 / 6 / 7; overflow-x: hidden; overflow-y: scroll;   -ms-overflow-style: none;} /* Optional right panel if needed */
+.div3::-webkit-scrollbar {
+  display: none;  }

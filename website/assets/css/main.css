@@ -52,18 +52,32 @@ body {
 }
 
 
-/* Buttons 
+.eltitle {
+    position: sticky;
+    text-align: left !important;
+}
+
+
 .rp-btn {
-    border: 5px solid var(--secondary-color); 
+    border: solid var(--primary-color); 
     border-radius: 10%;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     font-size: 20px;
 }
 
 .rp-btn:hover {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
-}*/
+}
+
+/* Mobile-friendly terminal box */
+.phone {
+    background-color: rgb(8, 6, 48);
+    border: 5px solid var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    margin: -1%;
+}
 
 /* Screen elements */
 .screenel {
@@ -157,3 +171,12 @@ body {
     margin-bottom: 8px;
 }
 
+table {
+    margin: 10px 0px;
+    color: var(--text-color) !important;
+}
+
+.table-dark {
+    background-color: rgb(21,21,21) !important;
+    --bs-table-bg: #151515 !important;
+}
