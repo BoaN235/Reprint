@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-
   <body>
     {% include topnav.html %}
     <div class="parent">
     <div class="div1 "> {% include navbar.html %} </div>
-    <div class="div2 screenel"> {% include printerimg.html %} </div>
+    <div class="div2 screenel">  </div>
     <div class="div3 screenel"> {% include printerlist.html %} </div>
-    <div class="div4 screenel"> </div>
+    <div class="div4 screenel"> {% include printerimg.html %} </div>
     <div class="div5 screenel"> </div>
     </div>
 
@@ -16,5 +15,6 @@
     {{ content }}
 
   </body>
+  {% include footer.html %}
 </html>
  
