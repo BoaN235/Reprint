@@ -1,48 +1,47 @@
 :root {
     --primary-color: rgb(232,114,4);
-    --light-color: rgb(73, 73, 73);
-    --dark-color: rgb(107, 107, 107);
-
-    --text-color: rgb(255, 123, 0);
+    --text-color: rgb(255,123,0);
 }
 
-
-html{
+/* Base */
+html {
     background-color: #151515;
     font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden;
+}
 
+body {
+    color: var(--text-color);
+    font-family: "Pixelify Sans", sans-serif;
+    margin-top: 50px; /* space for fixed topnav */
 }
-body{
-    color: var(--text-color) !important; 
-    font-family:"Pixelify Sans", sans-serif;
-}
-.flag{
+
+/* Flag */
+.flag {
     position: absolute;
     top: 10px;
     left: 10px;
     width: 150px;
 }
 
+/* Printer */
 .printer {
     position: relative;
-    width: 500px;   
-    height: 500px;  
-    background-color: transparent;
+    width: 500px;
+    height: 500px;
 }
 
 .printer img {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 10% !important;
-    height: 10% !important;
-    max-width: 10% !important;
+    left: 0;
+    width: 10%;
+    height: 10%;
     pointer-events: none;
 }
 
 .printer .rail {
-    width: 10% !important; 
-
+    width: 10%;
 }
 
 .printer .tool {
@@ -50,135 +49,102 @@ body{
     width: 20%;
 }
 
+/* Images */
 .image {
     width: 50%;
     height: 50%;
-    max-width: 50%;
 }
 
-.info{
-    position: absolute;
-    left: 240px;
-    top: 739px;
-    width: 310px;
-    height: 4px;
-    overflow: hidden;
-    font-size: 20px;
-    background-color: transparent;
-}
-.intro{
-    font-size: 25px;
-    
-}
-.rp-btn{
-    border: 5px solid var(--secondary-color);
+
+/* Buttons */
+.rp-btn {
+    border: 5px solid var(--secondary-color); /* ⚠ undefined variable */
     border-radius: 10%;
     background-color: var(--secondary-color);
-    font-size:20px;
+    font-size: 20px;
 }
+
 .rp-btn:hover {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.options-box {
-    padding: 10px;
-    background-color: transparent;
-    display: flex;
-    align-items: center; /* Centers vertically */
-    transform: translateY(550%);
-}
 
-.phone {
-    font-family: "Pixelify Sans", sans-serif;
-    margin: 0 auto;
-    height: 50%;
-    background-color: rgb(8, 6, 48) !important;
-    border: 5px solid var(--primary-color);
-    border-radius: 20px;
-    transform: translateY(-1000px);
-}
-
-.bg-color-dark {
-    background-color: rgb(8, 6, 48) !important;
-}
-
-.bg-color {
-    background-color: rgb(12, 8, 70) !important;
-}
-
+/* Navbar (side) */
 .navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 10;
-  width: 5%;
-  background-color: #262626;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #262626;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
 }
 
 .navbarel a {
-  display: block;
-  color: #000;
-  padding: 8px 0px;
-  text-decoration: none;
+    display: block;
+    color: #000;
+    padding: 8px 0;
+    left: 2%;
+    text-decoration: none;
 }
 
-/* Change the link and background color on hover */
 .navbarel a:hover {
-  background-color: #555555;
-  color: white;
+    background-color: #555;
+    color: white;
 }
 
+/* Layout grid */
 .parent {
-  display: grid;
-  height: calc(100vh - 50px); /* subtract topnav */
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+    display: grid;
+    height: calc(100vh - 50px);
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
 }
 
-
-.div1 { grid-area: 1 / 1 / 5 / 2; }
+.div1 { grid-area: 1 / 1 / 2 / 2; display: flex;}
 .div2 { grid-area: 1 / 2 / 3 / 5; }
 .div3 { grid-area: 3 / 2 / 5 / 5; }
 .div4 { grid-area: 1 / 5 / 3 / 7; }
 .div5 { grid-area: 3 / 5 / 5 / 7; }
 
-
+/* Screen elements */
 .screenel {
-    border: rgb(232,114,4);
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
 }
 
-/* Add a black background color to the top navigation */
+/* Top navigation */
 .topnav {
-  background-color: #262626;
-  overflow: hidden; /* Clear floats */
-  position: fixed; /* Fix the navbar to the top of the page */
-  top: 0;
-  width: 100%; /* Full width */
-  z-index: 9999; /* Ensure it is above other content */
+    display: flex;
+    align-items: center;       /* vertical centering */
+    gap: 16px;                 /* space between icon & links */
+    background-color: #262626;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 0 16px;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
-  float: left; /* Float links to the left to appear side-by-side */
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none; /* Remove underlines from links */
-  font-size: 17px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 
-/* To prevent content from being hidden by the fixed nav bar, add margin-top to the body or main content div */
-body {
-    margin-top: 50px; /* Adjust this value based on your navbar's height */
+.topnav svg {
+    flex-shrink: 0;            /* prevents icon from shrinking */
+    cursor: pointer;
 }
