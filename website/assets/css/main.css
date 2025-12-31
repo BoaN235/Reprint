@@ -180,3 +180,10 @@ table {
     background-color: rgb(21,21,21) !important;
     --bs-table-bg: #151515 !important;
 }
+
+.overflow {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.overflow::-webkit-scrollbar{overflow-x: hidden; overflow-y: scroll;   -ms-overflow-style: none; 
+  display: none;  }
