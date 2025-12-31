@@ -1,0 +1,49 @@
+<div>
+{% for printer in site.printers %}
+<article class="printer-preview">
+  <a href="{{ printer.url | relative_url }}">
+    <h2>{{ printer.title }}</h2>
+  </a>
+  {% if printer.subtitle %}
+    <p>{{ printer.subtitle }}</p>
+  {% endif %}
+
+  <!-- Hidden content div for this printer -->
+  <div class="printer-hidden-content" style="display:none;">
+    {{ printer.content | markdownify }}
+  </div>
+
+  <!-- Button to show content in external div -->
+  <button class="toggle-btn" data-target="printer-content">
+    Show Content
+  </button>
+</article>
+{% endfor %}
+
+</div>
+<script>
+document.querySelectorAll('.toggle-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    const contentDiv = document.getElementById(targetId);
+    if (!contentDiv) return;
+
+    // Get the hidden content from the same article
+    const article = button.closest('article');
+    const hiddenContent = article.querySelector('.printer-hidden-content').innerHTML;
+
+    // If contentDiv is already showing this content, hide it
+    if (contentDiv.innerHTML === hiddenContent && contentDiv.style.display === 'block') {
+      contentDiv.style.display = 'none';
+      button.textContent = 'Show Content';
+    } else {
+      contentDiv.innerHTML = hiddenContent;
+      contentDiv.style.display = 'block';
+
+      // Reset all other buttons
+      document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = 'Show Content');
+      button.textContent = 'Hide Content';
+    }
+  });
+});
+</script>

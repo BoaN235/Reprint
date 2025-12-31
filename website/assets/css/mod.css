@@ -1,0 +1,15 @@
+.parent {
+display: grid;
+    height: calc(98vh - 50px);
+grid-template-columns: 0.5fr repeat(4, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 6 / 2; display: flex; } /* Sidebar */
+.div2 { grid-area: 1 / 2 / 6 / 6; overflow-x: hidden; overflow-y: scroll;   -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */} /* Main content spans columns 2–5 */
+.div2::-webkit-scrollbar {
+  display: none;  }
+.div3 { grid-area: 1 / 6 / 6 / 7; } /* Optional right panel if needed */

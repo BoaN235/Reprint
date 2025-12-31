@@ -1,6 +1,4 @@
 ---
-layout: base
+layout: mods
 title: "Hephaestus-1"
 ---
-
-es
