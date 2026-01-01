@@ -41,36 +41,89 @@
         }
 
         function showView(view) {
+          // Hide all views first
+          homeView.style.display = 'none';
+          modsView.style.display = 'none';
+          
+          // Show the requested view
           if (view === 'home') {
-            homeView.style.display = '';
-            modsView.style.display = 'none';
+            homeView.style.display = 'block';
             if (homeCss) homeCss.media = 'all';
             if (modCss) modCss.media = 'not all';
-          } else {
-            homeView.style.display = 'none';
-            modsView.style.display = '';
+          } else if (view === 'mods') {
+            modsView.style.display = 'block';
             if (homeCss) homeCss.media = 'not all';
             if (modCss) modCss.media = 'all';
           }
+          
           setActiveLink(view);
+          
+          // Debug log to help with troubleshooting
+          console.log('Switched to view:', view);
         }
 
         // Hook sidebar links
         document.addEventListener('click', function(e) {
           var t = e.target;
-          if (t && t.matches('.navbar-nav .nav-link[data-view]')) {
-            e.preventDefault();
-            var view = t.getAttribute('data-view');
-            showView(view);
+          
+          // Check if clicked element or its parent is a nav link with data-view
+          while (t && t !== document) {
+            if (t.matches && t.matches('.nav-link[data-view]')) {
+              e.preventDefault();
+              var view = t.getAttribute('data-view');
+              if (view) {
+                showView(view);
+                // Update URL hash
+                history.pushState(null, null, '#' + view);
+              }
+              return;
+            }
+            t = t.parentElement;
           }
         });
 
-        // If URL has hash, use it
-        var hash = (location.hash || '').replace('#','');
-        if (hash === 'home' || hash === 'mods') {
-          showView(hash);
+        // Additional specific handler for nav links
+        document.addEventListener('DOMContentLoaded', function() {
+          var navLinks = document.querySelectorAll('.nav-link[data-view]');
+          navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              var view = this.getAttribute('data-view');
+              if (view) {
+                showView(view);
+                history.pushState(null, null, '#' + view);
+              }
+            });
+          });
+        });
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', function() {
+          var hash = (location.hash || '').replace('#','');
+          if (hash === 'home' || hash === 'mods') {
+            showView(hash);
+          }
+        });
+
+        // Initialize view based on URL hash or default
+        function initializeView() {
+          var hash = (location.hash || '').replace('#','');
+          var initialView = '{{ initial }}';
+          
+          if (hash === 'home' || hash === 'mods') {
+            showView(hash);
+          } else {
+            showView(initialView);
+            // Set the hash to match the initial view
+            history.replaceState(null, null, '#' + initialView);
+          }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initializeView);
         } else {
-          showView('{{ initial }}');
+          initializeView();
         }
       })();
     </script>

@@ -82,7 +82,7 @@ body {
 /* Screen elements */
 .screenel {
     border: 3px solid var(--primary-color);
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 15px 15px;
     padding: 10px 10px;
 }
@@ -212,6 +212,11 @@ table {
     padding: 8px;
     height: calc(100% - 42px); /* fill remaining space under the local navbar */
     max-width: 100%;
+}
+.console-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 .console-content {
     background: #0a0a0a;
