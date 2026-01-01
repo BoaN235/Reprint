@@ -1,4 +1,4 @@
-<table class="table table-dark table-bordered align-middle">
+<table class="table table-dark table-bordered align-middle" style="table-layout: fixed;">
   <tr>
     <th>Name</th>
     <th>State</th>
@@ -7,34 +7,34 @@
   </tr>
   <tr>
     <td>Extruder</td>
-    <td>72%</td>
-    <td>123</td>
-    <td>190</td>
+    <td><span id="extruderState">—</span></td>
+    <td><span id="extruderTemp">—</span> °C</td>
+    <td><span id="extruderTarget">—</span> °C</td>
   </tr>
   <tr>
     <td>Heated Bed</td>
-    <td>100%</td>
-    <td>32</td>
-    <td>50</td>
+    <td><span id="bedState">—</span></td>
+    <td><span id="bedTemp">—</span> °C</td>
+    <td><span id="bedTarget">—</span> °C</td>
   </tr>
 </table>
 
-<table class="table table-dark table-bordered align-middle">
+<table class="table table-dark table-bordered align-middle" style="table-layout: fixed;">
   <tr>
     <th>Position</th>
     <th>X</th>
     <th>Y</th>
-    <th>Y</th>
+    <th>Z</th>
   </tr>
   <tr>
-    <td>absoulute</td>
-    <td>32.35</td>
-    <td>0.72</td>
-    <td>0.00</td>
+    <td>absolute</td>
+    <td><span id="posX">—</span> mm</td>
+    <td><span id="posY">—</span> mm</td>
+    <td><span id="posZ">—</span> mm</td>
   </tr>
 </table>
 
-<table class="table table-dark table-bordered align-middle">
+<table class="table table-dark table-bordered align-middle" style="table-layout: fixed;">
   <tr>
     <th>Speed</th>
     <th>Flow</th>
@@ -42,9 +42,9 @@
     <th>Layer</th>
   </tr>
   <tr>
-    <td>0 mm/s</td>
-    <td>0.0 mm^3/s</td>
-    <td>0.00 mm</td>
-    <td>0 of 150</td>
+    <td><span id="speed">—</span> mm/s</td>
+    <td><span id="flow">—</span> mm³/s</td>
+    <td><span id="filament">—</span> mm</td>
+    <td><span id="layer">—</span></td>
   </tr>
 </table>
