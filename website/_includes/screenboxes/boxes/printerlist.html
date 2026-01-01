@@ -43,27 +43,29 @@
 
 
 <script>
-document.querySelectorAll('.printer-btn').forEach(button => {
+// Robust toggle for printer content without relying on innerHTML comparisons
+document.querySelectorAll('.printer-btn').forEach((button) => {
   button.addEventListener('click', () => {
     const target = document.getElementById('printer-content');
     const row = button.closest('tr');
-    const hidden = row.querySelector('.printer-hidden-content');
-
+    const hidden = row ? row.querySelector('.printer-hidden-content') : null;
     if (!target || !hidden) return;
 
-    // Toggle same content
-    if (target.innerHTML === hidden.innerHTML && target.style.display === 'block') {
+    // If this same row is already open, close it
+    if (target._openEl === hidden && target.style.display !== 'none') {
       target.style.display = 'none';
+      target._openEl = null;
       button.textContent = 'Open';
       return;
     }
 
-    // Load content into external div
+    // Open new content
     target.innerHTML = hidden.innerHTML;
     target.style.display = 'block';
+    target._openEl = hidden;
 
-    // Reset all buttons
-    document.querySelectorAll('.printer-btn').forEach(b => b.textContent = 'Open');
+    // Reset all button labels, then mark the active one as Close
+    document.querySelectorAll('.printer-btn').forEach((b) => (b.textContent = 'Open'));
     button.textContent = 'Close';
   });
 });

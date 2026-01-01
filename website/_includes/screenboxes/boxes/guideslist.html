@@ -71,27 +71,29 @@
 
 
 <script>
-document.querySelectorAll('.guide-btn').forEach(button => {
+// Robust toggle for guide content without relying on innerHTML comparisons
+document.querySelectorAll('.guide-btn').forEach((button) => {
   button.addEventListener('click', () => {
     const target = document.getElementById('guide-content');
     const row = button.closest('tr');
-    const hidden = row.querySelector('.guide-hidden-content');
-
+    const hidden = row ? row.querySelector('.guide-hidden-content') : null;
     if (!target || !hidden) return;
 
-    // Toggle same guide
-    if (target.innerHTML === hidden.innerHTML && target.style.display === 'block') {
+    // If this same row is already open, close it
+    if (target._openEl === hidden && target.style.display !== 'none') {
       target.style.display = 'none';
+      target._openEl = null;
       button.textContent = 'Open';
       return;
     }
 
-    // Load guide content
+    // Open new content
     target.innerHTML = hidden.innerHTML;
     target.style.display = 'block';
+    target._openEl = hidden;
 
-    // Reset all buttons
-    document.querySelectorAll('.guide-btn').forEach(b => b.textContent = 'Open');
+    // Reset all button labels, then mark the active one as Close
+    document.querySelectorAll('.guide-btn').forEach((b) => (b.textContent = 'Open'));
     button.textContent = 'Close';
   });
 });

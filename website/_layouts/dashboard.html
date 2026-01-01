@@ -82,20 +82,7 @@
           }
         });
 
-        // Additional specific handler for nav links
-        document.addEventListener('DOMContentLoaded', function() {
-          var navLinks = document.querySelectorAll('.nav-link[data-view]');
-          navLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-              e.preventDefault();
-              var view = this.getAttribute('data-view');
-              if (view) {
-                showView(view);
-                history.pushState(null, null, '#' + view);
-              }
-            });
-          });
-        });
+        // Single delegated handler above is sufficient for nav links
 
         // Handle browser back/forward navigation
         window.addEventListener('popstate', function() {
