@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include req/head.html %}
+    {% assign initial = page.initial_view | default: 'home' %}
+    {% if initial == 'home' %}
+      <link id="home-css" rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" media="all">
+      <link id="mod-css" rel="stylesheet" href="{{ '/assets/css/mod.css' | relative_url }}" media="not all">
+    {% else %}
+      <link id="home-css" rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" media="not all">
+      <link id="mod-css" rel="stylesheet" href="{{ '/assets/css/mod.css' | relative_url }}" media="all">
+    {% endif %}
+  </head>
+  <body>
+    {% include navbars/topnav.html %}
+
+    <section id="home-view" class="home" {% if initial != 'home' %}style="display:none;"{% endif %}>
+      {% include screenboxes/homeboxes.html %}
+    </section>
+
+    <section id="mods-view" class="mods" {% if initial != 'mods' %}style="display:none;"{% endif %}>
+      {% include screenboxes/modboxes.html %}
+    </section>
+
+    <script>
+      (function() {
+        var homeView = document.getElementById('home-view');
+        var modsView = document.getElementById('mods-view');
+        var homeCss = document.getElementById('home-css');
+        var modCss = document.getElementById('mod-css');
+
+        function setActiveLink(view) {
+          var links = document.querySelectorAll('.navbar-nav .nav-link[data-view]');
+          links.forEach(function(a) {
+            if (a.getAttribute('data-view') === view) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        }
+
+        function showView(view) {
+          // Hide all views first
+          homeView.style.display = 'none';
+          modsView.style.display = 'none';
+          
+          // Show the requested view
+          if (view === 'home') {
+            homeView.style.display = 'block';
+            if (homeCss) homeCss.media = 'all';
+            if (modCss) modCss.media = 'not all';
+          } else if (view === 'mods') {
+            modsView.style.display = 'block';
+            if (homeCss) homeCss.media = 'not all';
+            if (modCss) modCss.media = 'all';
+          }
+          
+          setActiveLink(view);
+          
+          // Debug log to help with troubleshooting
+          console.log('Switched to view:', view);
+        }
+
+        // Hook sidebar links
+        document.addEventListener('click', function(e) {
+          var t = e.target;
+          
+          // Check if clicked element or its parent is a nav link with data-view
+          while (t && t !== document) {
+            if (t.matches && t.matches('.nav-link[data-view]')) {
+              e.preventDefault();
+              var view = t.getAttribute('data-view');
+              if (view) {
+                showView(view);
+                // Update URL hash
+                history.pushState(null, null, '#' + view);
+              }
+              return;
+            }
+            t = t.parentElement;
+          }
+        });
+
+        // Single delegated handler above is sufficient for nav links
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', function() {
+          var hash = (location.hash || '').replace('#','');
+          if (hash === 'home' || hash === 'mods') {
+            showView(hash);
+          }
+        });
+
+        // Initialize view based on URL hash or default
+        function initializeView() {
+          var hash = (location.hash || '').replace('#','');
+          var initialView = '{{ initial }}';
+          
+          if (hash === 'home' || hash === 'mods') {
+            showView(hash);
+          } else {
+            showView(initialView);
+            // Set the hash to match the initial view
+            history.replaceState(null, null, '#' + initialView);
+          }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initializeView);
+        } else {
+          initializeView();
+        }
+      })();
+    </script>
+  </body>
+  {% include req/footer.html %}
+</html>

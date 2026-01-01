@@ -1,0 +1,120 @@
+<table class="table table-dark table-bordered align-middle">
+  <tr>
+    <th>File Name</th>
+    <th>File Size</th>
+    <th>Filament</th>
+    <th>Guide</th>
+  </tr>
+
+  <tr>
+    <td>requirements.md</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
+    <td>
+      <button class="rp-btn guide-btn">Open</button>
+
+      <!-- Jekyll renders markdown HERE -->
+      <div class="guide-hidden-content" style="display:none;">
+        {% include guides/requirements.html %}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>timeline.md</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
+    <td>
+      <button class="rp-btn guide-btn">Open</button>
+
+      <div class="guide-hidden-content" style="display:none;">
+        {% include guides/timeline.html %}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>ideas.md</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
+    <td>
+      <button class="rp-btn guide-btn">Open</button>
+
+      <div class="guide-hidden-content" style="display:none;">
+        {% include guides/ideas.html %}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>remodel.md</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
+    <td>
+      <button class="rp-btn guide-btn">Open</button>
+
+      <div class="guide-hidden-content" style="display:none;">
+        {% include guides/remodel.html %}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>submit.md</td>
+    <td>—</td>
+    <td>—</td>
+    <td>
+      <button class="rp-btn" onclick="window.location.href='https://forms.fillout.com/t/66N2admZL9us'">Open</button>
+    </td>
+  </tr>
+</table>
+
+
+<script>
+// Robust toggle for guide content without relying on innerHTML comparisons
+document.querySelectorAll('.guide-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    const target = document.getElementById('guide-content');
+    const row = button.closest('tr');
+    const hidden = row ? row.querySelector('.guide-hidden-content') : null;
+    if (!target || !hidden) return;
+
+    // If this same row is already open, close it
+    if (target._openEl === hidden && target.style.display !== 'none') {
+      target.style.display = 'none';
+      target._openEl = null;
+      button.textContent = 'Open';
+      return;
+    }
+
+    // Open new content
+    target.innerHTML = hidden.innerHTML;
+    target.style.display = 'block';
+    target._openEl = hidden;
+
+    // Reset all button labels, then mark the active one as Close
+    document.querySelectorAll('.guide-btn').forEach((b) => (b.textContent = 'Open'));
+    button.textContent = 'Close';
+  });
+});
+
+// Randomize displayed File Size (KB/MB) and Filament (g) for guides
+(function(){
+  function rnd(min, max){ return Math.random() * (max - min) + min; }
+  function formatSize(){
+    if(Math.random() < 0.8){
+      const kb = Math.round(rnd(20, 600));
+      return kb + ' KB';
+    } else {
+      const mb = Math.round(rnd(0.4, 6.0)*10)/10;
+      return mb + ' MB';
+    }
+  }
+  function formatFilament(){
+    const g = Math.round(rnd(10, 350)*10)/10;
+    return g + ' g';
+  }
+  document.querySelectorAll('.guide-size').forEach(el => el.textContent = formatSize());
+  document.querySelectorAll('.guide-filament').forEach(el => el.textContent = formatFilament());
+})();
+</script>

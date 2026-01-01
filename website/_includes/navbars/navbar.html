@@ -1,0 +1,22 @@
+<nav class="navbar bg-body-tertiary ">
+  <div class="container-fluid ">
+
+    <!-- Brand -->
+    <a class="navbar-brand nav-link nav_title mb-3" href="#">
+      Reprint
+    </a>
+
+    <!-- Nav links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link {% if page.initial_view == 'home' %}active{% endif %}" data-view="home" href="#home"><div class="console-title"><i class="bi bi-columns-gap"></i><span>Home</span></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if page.initial_view == 'mods' %}active{% endif %}" data-view="mods" href="#mods"><div class="console-title"><i class="bi bi-card-list"></i><span>Mods</span></div></a>
+      </li>
+    </ul>
+
+
+  </div>
+  <a href="https://hackclub.com/"><img src="assets/icons/flag-standalone-wtransparent.svg" alt="Reprint Logo" width="120" height="120"></a>
+</nav>

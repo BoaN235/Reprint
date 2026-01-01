@@ -1,0 +1,95 @@
+<table class="table table-dark table-bordered align-middle">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Filament</th>
+      <th>Print</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for printer in site.printers %}
+    <tr>
+      <td>
+        {{ printer.title }}.g3code
+        <div style="font-size:12px; line-height:1.25; color:#9e9e9e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:4px;">
+          {% if printer.subtitle %}
+            {{ printer.subtitle }}
+          {% else %}
+            —
+          {% endif %}
+        </div>
+      </td>
+
+      <td><span class="printer-size">—</span></td>
+      <td><span class="printer-filament">—</span></td>
+
+      <td>
+        <button class="rp-btn printer-btn">
+          Open
+        </button>
+
+        <!-- ✅ Store printer content SAFELY -->
+        <div class="printer-hidden-content" style="display:none;">
+          {{ printer.content | markdownify }}
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+<script>
+// Robust toggle for printer content without relying on innerHTML comparisons
+document.querySelectorAll('.printer-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    const target = document.getElementById('printer-content');
+    const row = button.closest('tr');
+    const hidden = row ? row.querySelector('.printer-hidden-content') : null;
+    if (!target || !hidden) return;
+
+    // If this same row is already open, close it
+    if (target._openEl === hidden && target.style.display !== 'none') {
+      target.style.display = 'none';
+      target._openEl = null;
+      button.textContent = 'Open';
+      return;
+    }
+
+    // Open new content
+    target.innerHTML = hidden.innerHTML;
+    target.style.display = 'block';
+    target._openEl = hidden;
+
+    // Reset all button labels, then mark the active one as Close
+    document.querySelectorAll('.printer-btn').forEach((b) => (b.textContent = 'Open'));
+    button.textContent = 'Close';
+  });
+});
+
+// Populate random Size (KB/MB) and Filament (g) for each printer row
+(function(){
+  function rnd(min, max){ return Math.random() * (max - min) + min; }
+  function formatSize(){
+    // 80% chance KB (30–800KB), 20% chance MB (0.5–8.0MB)
+    if(Math.random() < 0.8){
+      const kb = Math.round(rnd(30, 800));
+      return kb + ' KB';
+    } else {
+      const mb = Math.round(rnd(0.5, 8.0)*10)/10; // one decimal
+      return mb + ' MB';
+    }
+  }
+  function formatFilament(){
+    // 20g – 500g, one decimal
+    const g = Math.round(rnd(20, 500)*10)/10;
+    return g + ' g';
+  }
+
+  document.querySelectorAll('.printer-size').forEach(el => { el.textContent = formatSize(); });
+  document.querySelectorAll('.printer-filament').forEach(el => { el.textContent = formatFilament(); });
+})();
+</script>

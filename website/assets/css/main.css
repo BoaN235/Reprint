@@ -1,39 +1,43 @@
-html{
-    background-color: rgb(12, 8, 70);
-    font-family: "Pixelify Sans", sans-serif;
-    /* overflow: hidden;*/
-}
-body{
-    color: var(--text-color) !important; 
-    font-family:"Pixelify Sans", sans-serif;
-}
-.flag{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 150px;
+:root {
+    --primary-color: rgb(232,114,4);
+    --text-color: rgb(255,123,0);
 }
 
+/* Base e87204ff*/
+html {
+    background-color: #151515 !important;
+    font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden;
+}
+
+body {
+    color: var(--text-color) !important;
+    background-color: #151515 !important;
+    font-family: "Pixelify Sans", sans-serif;
+    /*margin-top: 50px;  space for fixed topnav */
+}
+
+/* Printer */
 .printer {
     position: relative;
-    width: 500px;   
-    height: 500px;  
-    background-color: transparent;
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin-left: auto;
+  margin-right: auto;
 }
 
 .printer img {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 10% !important;
-    height: 10% !important;
-    max-width: 10% !important;
+    left: 0;
+    width: 10%;
+    height: 10%;
     pointer-events: none;
 }
 
 .printer .rail {
-    width: 10% !important; 
-
+    width: 10%;
 }
 
 .printer .tool {
@@ -41,68 +45,201 @@ body{
     width: 20%;
 }
 
+/* Images */
 .image {
     width: 50%;
     height: 50%;
-    max-width: 50%;
 }
 
-.info{
-    position: absolute;
-    left: 240px;
-    top: 739px;
-    width: 310px;
-    height: 4px;
-    overflow: hidden;
-    font-size: 20px;
-    background-color: transparent;
+
+.eltitle {
+    position: sticky;
+    text-align: left !important;
 }
-.intro{
-    font-size: 25px;
-    
-}
-.rp-btn{
-    border: 5px solid var(--secondary-color);
+
+
+.rp-btn {
+    border: solid var(--primary-color); 
     border-radius: 10%;
-    background-color: var(--secondary-color);
-    font-size:20px;
+    background-color: var(--primary-color);
+    font-size: 20px;
 }
+
 .rp-btn:hover {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.options-box {
-    padding: 10px;
-    background-color: transparent;
-    display: flex;
-    align-items: center; /* Centers vertically */
-    transform: translateY(550%);
-}
-
+/* Mobile-friendly terminal box */
 .phone {
-    font-family: "Pixelify Sans", sans-serif;
-    margin: 0 auto;
-    height: 50%;
-    background-color: rgb(8, 6, 48) !important;
+    background-color: rgb(8, 6, 48);
     border: 5px solid var(--primary-color);
     border-radius: 20px;
-    transform: translateY(-1000px);
+    display: flex;
+    margin: -1%;
 }
 
-.bg-color-dark {
-    background-color: rgb(8, 6, 48) !important;
+/* Screen elements */
+.screenel {
+    border: 3px solid var(--primary-color);
+    border-radius: 5px;
+    margin: 15px 15px;
+    padding: 10px 10px;
 }
 
-.bg-color {
-    background-color: rgb(12, 8, 70) !important;
+/* Top navigation */
+.topnav {
+    display: flex;
+    align-items: center;       /* vertical centering */
+    gap: 16px;                 /* space between icon & links */
+    background-color: #262626;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 0 16px;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
 
-:root {
-    --primary-color: rgb(232,114,4);
-    --secondary-color: rgb(162,82,11);
-    --tertiary-color: rgb(113,57,6);
-
-    --text-color: rgb(255, 123, 0);
+.topnav svg {
+    flex-shrink: 0;            /* prevents icon from shrinking */
+    cursor: pointer;
 }
+
+/* Sidebar container */
+.navbar {
+    background-color: #1f1f1f !important;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column; 
+}
+
+/* Stack items vertically */
+.navbar-nav {
+    width: 100%;
+    margin-top: 12px;
+}
+
+
+/* Nav items */
+.navbar-nav .nav-link {
+    color: #9e9e9e !important;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    padding: 10px 12px;
+    border-right: 3px solid transparent;
+    background: none !important;
+}
+
+/* Hover state */
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    background: none !important;
+}
+
+/* Active state (Mainsail style) */
+.navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    border-right: 3px solid var(--primary-color);
+    background: none !important;
+}
+
+/* Brand title */
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+table {
+    margin: 10px 0px;
+    color: var(--text-color) !important;
+}
+
+.table-dark {
+    background-color: rgb(21,21,21) !important;
+    --bs-table-bg: #151515 !important;
+}
+
+.overflow {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.overflow::-webkit-scrollbar{overflow-x: hidden; overflow-y: scroll;   -ms-overflow-style: none; 
+  display: none;  }
+
+
+/* Small screens: allow scrolling and improve spacing */
+@media (max-width: 900px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+    .screenel {
+        margin: 10px;
+    }
+}
+
+/* Console styling (printer-like) */
+.console-box {
+    background-color: #0f0f0f;
+    border: 2px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 8px;
+    height: calc(100% - 42px); /* fill remaining space under the local navbar */
+    max-width: 100%;
+}
+.console-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.console-content {
+    background: #0a0a0a;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
+    color: #d9d9d9;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.35;
+    padding: 10px 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    height: 100%;
+    overflow: auto; /* allow scrolling inside the console */
+    max-width: 100%;
+    /* Hide scrollbar visuals while preserving scrollability */
+    -ms-overflow-style: none;      /* IE and Edge */
+    scrollbar-width: none;         /* Firefox */
+}
+.console-content::-webkit-scrollbar { /* Chrome, Safari, Opera */
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+/* (reverted recent fixed table and content constraints) */

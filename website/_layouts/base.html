@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %}
+  <head>
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+    {% include req/head.html %}
+  </head>
+  
   <body>
-
-    {% include printerlist.html %}
-    {{ content }}
-
+    {% include navbars/topnav.html %}
+    {% include screenboxes/homeboxes.html %}
   </body>
+  {% include req/footer.html %}
 </html>
+ 
