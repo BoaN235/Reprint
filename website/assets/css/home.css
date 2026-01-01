@@ -14,3 +14,17 @@
 .div3 { grid-area: 3 / 2 / 5 / 5; }
 .div4 { grid-area: 1 / 5 / 3 / 7; }
 .div5 { grid-area: 3 / 5 / 5 / 7; }
+
+/* Small screens: stack elements vertically */
+@media (max-width: 900px) {
+    .parent {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .screenel {
+        width: 100%;
+        max-width: 100%;
+    }
+}

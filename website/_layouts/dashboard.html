@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include req/head.html %}
+    {% assign initial = page.initial_view | default: 'home' %}
+    {% if initial == 'home' %}
+      <link id="home-css" rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" media="all">
+      <link id="mod-css" rel="stylesheet" href="{{ '/assets/css/mod.css' | relative_url }}" media="not all">
+    {% else %}
+      <link id="home-css" rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" media="not all">
+      <link id="mod-css" rel="stylesheet" href="{{ '/assets/css/mod.css' | relative_url }}" media="all">
+    {% endif %}
+  </head>
+  <body>
+    {% include navbars/topnav.html %}
+
+    <section id="home-view" class="home" {% if initial != 'home' %}style="display:none;"{% endif %}>
+      {% include screenboxes/homeboxes.html %}
+    </section>
+
+    <section id="mods-view" class="mods" {% if initial != 'mods' %}style="display:none;"{% endif %}>
+      {% include screenboxes/modboxes.html %}
+    </section>
+
+    <script>
+      (function() {
+        var homeView = document.getElementById('home-view');
+        var modsView = document.getElementById('mods-view');
+        var homeCss = document.getElementById('home-css');
+        var modCss = document.getElementById('mod-css');
+
+        function setActiveLink(view) {
+          var links = document.querySelectorAll('.navbar-nav .nav-link[data-view]');
+          links.forEach(function(a) {
+            if (a.getAttribute('data-view') === view) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        }
+
+        function showView(view) {
+          if (view === 'home') {
+            homeView.style.display = '';
+            modsView.style.display = 'none';
+            if (homeCss) homeCss.media = 'all';
+            if (modCss) modCss.media = 'not all';
+          } else {
+            homeView.style.display = 'none';
+            modsView.style.display = '';
+            if (homeCss) homeCss.media = 'not all';
+            if (modCss) modCss.media = 'all';
+          }
+          setActiveLink(view);
+        }
+
+        // Hook sidebar links
+        document.addEventListener('click', function(e) {
+          var t = e.target;
+          if (t && t.matches('.navbar-nav .nav-link[data-view]')) {
+            e.preventDefault();
+            var view = t.getAttribute('data-view');
+            showView(view);
+          }
+        });
+
+        // If URL has hash, use it
+        var hash = (location.hash || '').replace('#','');
+        if (hash === 'home' || hash === 'mods') {
+          showView(hash);
+        } else {
+          showView('{{ initial }}');
+        }
+      })();
+    </script>
+  </body>
+  {% include req/footer.html %}
+</html>

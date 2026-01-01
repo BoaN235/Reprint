@@ -187,3 +187,18 @@ table {
 }
 .overflow::-webkit-scrollbar{overflow-x: hidden; overflow-y: scroll;   -ms-overflow-style: none; 
   display: none;  }
+
+/* Small screens: allow scrolling and improve spacing */
+@media (max-width: 900px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+    .screenel {
+        margin: 10px;
+    }
+}
