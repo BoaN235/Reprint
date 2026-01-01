@@ -8,8 +8,8 @@
 
   <tr>
     <td>requirements.md</td>
-    <td>73KB</td>
-    <td>132.5g</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
     <td>
       <button class="rp-btn guide-btn">Open</button>
 
@@ -22,8 +22,8 @@
 
   <tr>
     <td>timeline.md</td>
-    <td>22KB</td>
-    <td>98.1g</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
     <td>
       <button class="rp-btn guide-btn">Open</button>
 
@@ -35,8 +35,8 @@
 
   <tr>
     <td>ideas.md</td>
-    <td>31.4KB</td>
-    <td>110.2g</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
     <td>
       <button class="rp-btn guide-btn">Open</button>
 
@@ -48,8 +48,8 @@
 
   <tr>
     <td>remodel.md</td>
-    <td>27.1KB</td>
-    <td>104.8g</td>
+    <td><span class="guide-size">—</span></td>
+    <td><span class="guide-filament">—</span></td>
     <td>
       <button class="rp-btn guide-btn">Open</button>
 
@@ -95,4 +95,24 @@ document.querySelectorAll('.guide-btn').forEach(button => {
     button.textContent = 'Close';
   });
 });
+
+// Randomize displayed File Size (KB/MB) and Filament (g) for guides
+(function(){
+  function rnd(min, max){ return Math.random() * (max - min) + min; }
+  function formatSize(){
+    if(Math.random() < 0.8){
+      const kb = Math.round(rnd(20, 600));
+      return kb + ' KB';
+    } else {
+      const mb = Math.round(rnd(0.4, 6.0)*10)/10;
+      return mb + ' MB';
+    }
+  }
+  function formatFilament(){
+    const g = Math.round(rnd(10, 350)*10)/10;
+    return g + ' g';
+  }
+  document.querySelectorAll('.guide-size').forEach(el => el.textContent = formatSize());
+  document.querySelectorAll('.guide-filament').forEach(el => el.textContent = formatFilament());
+})();
 </script>

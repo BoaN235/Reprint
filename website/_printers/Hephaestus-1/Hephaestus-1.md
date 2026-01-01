@@ -3,7 +3,7 @@ layout: printer
 title: "Hephaestus-1"
 author: Noah
 date: 2025-01-01
-subtitle: A simple CoreXY Printer
+subtitle: A simple CoreXY Printer 
 repository: "https://raw.githubusercontent.com/BoaN235/hephaestus-3D-printer/refs/heads/main/LOG.md"
 ---
 # Hephaestus-1

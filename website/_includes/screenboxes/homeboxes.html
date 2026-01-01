@@ -1,6 +1,11 @@
 <div class="parent">
     <div class="div1 "> {% include navbars/navbar.html %} </div>
-    <div class="div2 screenel "> <nav class="navbar eltitle bg-body-tertiary"><div class="container-fluid ">Console</div></nav><div id="guide-content" style="display:none;"></div></div>
+        <div class="div2 screenel "> 
+            <nav class="navbar eltitle bg-body-tertiary"><div class="container-fluid ">Console</div></nav>
+            <div class="console-box">
+                <div id="guide-content" class="console-content" style="display:none;"></div>
+            </div>
+        </div>
     <div class="div3 screenel overflow"> <nav class="navbar eltitle bg-body-tertiary"><div class="container-fluid ">Files</div></nav>{% include screenboxes/boxes/guideslist.html %} </div>
     <div class="div4 screenel"> <nav class="navbar eltitle bg-body-tertiary"><div class="container-fluid ">Webcam</div></nav> {% include screenboxes/boxes/printerimg.html %} <div style="position: relative; margin-left: 5px; bottom: 65px;">● Live</div> </div>
     <div class="div5 screenel"> <nav class="navbar eltitle bg-body-tertiary"><div class="container-fluid ">Stats</div></nav> {% include screenboxes/boxes/printerstats.html %} </div>

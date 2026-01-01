@@ -2,7 +2,8 @@
   <thead>
     <tr>
       <th>File</th>
-      <th>Description</th>
+      <th>Size</th>
+      <th>Filament</th>
       <th>Print</th>
     </tr>
   </thead>
@@ -10,15 +11,19 @@
   <tbody>
     {% for printer in site.printers %}
     <tr>
-      <td>{{ printer.title }}</td>
-
       <td>
-        {% if printer.subtitle %}
-          {{ printer.subtitle }}
-        {% else %}
-          —
-        {% endif %}
+        {{ printer.title }}.g3code
+        <div style="font-size:12px; line-height:1.25; color:#9e9e9e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:4px;">
+          {% if printer.subtitle %}
+            {{ printer.subtitle }}
+          {% else %}
+            —
+          {% endif %}
+        </div>
       </td>
+
+      <td><span class="printer-size">—</span></td>
+      <td><span class="printer-filament">—</span></td>
 
       <td>
         <button class="rp-btn printer-btn">
@@ -62,4 +67,27 @@ document.querySelectorAll('.printer-btn').forEach(button => {
     button.textContent = 'Close';
   });
 });
+
+// Populate random Size (KB/MB) and Filament (g) for each printer row
+(function(){
+  function rnd(min, max){ return Math.random() * (max - min) + min; }
+  function formatSize(){
+    // 80% chance KB (30–800KB), 20% chance MB (0.5–8.0MB)
+    if(Math.random() < 0.8){
+      const kb = Math.round(rnd(30, 800));
+      return kb + ' KB';
+    } else {
+      const mb = Math.round(rnd(0.5, 8.0)*10)/10; // one decimal
+      return mb + ' MB';
+    }
+  }
+  function formatFilament(){
+    // 20g – 500g, one decimal
+    const g = Math.round(rnd(20, 500)*10)/10;
+    return g + ' g';
+  }
+
+  document.querySelectorAll('.printer-size').forEach(el => { el.textContent = formatSize(); });
+  document.querySelectorAll('.printer-filament').forEach(el => { el.textContent = formatFilament(); });
+})();
 </script>
