@@ -128,6 +128,7 @@ body {
     flex-direction: column; 
 }
 
+
 /* Stack items vertically */
 .navbar-nav {
     width: 100%;
@@ -149,17 +150,21 @@ body {
 }
 
 /* Hover state */
-.navbar-nav .nav-link:hover {
+.navbar-nav:hover {
     color: #ffffff !important;
     background: none !important;
 }
 
-/* Active state (Mainsail style) */
-.navbar-nav .nav-link.active {
+.nav-link:hover {
     color: #ffffff !important;
-    border-right: 3px solid var(--primary-color);
-    background: none !important;
+    background: #3b3b3b !important;
 }
+.nav-link.active {
+    color: #ffffff !important;
+    background: #3b3b3b !important;
+    border-right: 3px solid var(--primary-color);
+}
+
 
 /* Brand title */
 .navbar-brand {
@@ -241,5 +246,16 @@ table {
     height: 0;
     display: none;
 }
-
 /* (reverted recent fixed table and content constraints) */
+
+.navbar-side-brand::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary-color);
+    margin-top: 8px;
+    margin-left: -12px;
+    margin-right: -12px;
+    width: calc(100% + 24px);
+}
