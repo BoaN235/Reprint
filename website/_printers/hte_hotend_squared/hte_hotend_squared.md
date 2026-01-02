@@ -1,10 +1,10 @@
 ---
-layout: printer
-title: "Laser Cutter Printer"
-author: Rikhav
-date: 2025-01-01
-subtitle: A Laser Cutter mod to an (idk wut printer)
-repository: "https://raw.githubusercontent.com/BoaN235/hephaestus-3D-printer/refs/heads/main/LOG.md"
+layout: "printer"
+title: "hte_hotend_squared"
+description: "toolhead attacthment for add laser cutting"
+printer_id: "hte_hotend_squared"
+permalink: "/printers/hte_hotend_squared/"
+repository: "https://raw.githubusercontent.com/Rikhav21/Printer-Mod/refs/heads/main/Journal.md"
 ---
 # Laser cutter 
 #### By @Rikhav
@@ -72,3 +72,6 @@ Today was mainly ust a trouble shooting day, I updated the code some more, added
 
 <img width="491" height="397" alt="image" src="https://github.com/user-attachments/assets/174b7899-f867-4e47-985b-f84924046b80" />
 <img width="481" height="443" alt="image" src="https://github.com/user-attachments/assets/e18f8cdd-2159-4334-84ef-9c757bac3f11" />
+
+
+Time spent: 4 hours

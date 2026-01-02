@@ -1,0 +1,20 @@
+## Add your printers below
+
+# name: 
+#   title: "name"
+#   description: "description"
+#   repository: "https://raw.githubusercontent.com/your_discord_username/repo_name/refs/heads/main/Journal.md"
+#   file_name: "name.md"
+
+hte_hotend_squared: 
+  title: "hte_hotend_squared"
+  description: "toolhead attacthment for add laser cutting"
+  repository: "https://raw.githubusercontent.com/Rikhav21/Printer-Mod/refs/heads/main/Journal.md"
+  file_name: "hte_hotend_squared.md"
+
+
+Hephaestus-1V2: 
+  title: "Hephaestus-1V2"
+  description: "Compleate redesign of Hephaestus-1"
+  repository: "https://raw.githubusercontent.com/BoaN235/hephaestus-3D-printer/refs/heads/main/hephaestus-1.2_journal.md"
+  file_name: "Hephaestus-1.2.md"
