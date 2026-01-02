@@ -15,6 +15,6 @@ hte_hotend_squared:
 
 Hephaestus-1V2: 
   title: "Hephaestus-1V2"
-  description: "Compleate redesign of Hephaestus-1"
+  description: "Compleate redesign of Hephaestus-1.1"
   repository: "https://raw.githubusercontent.com/BoaN235/hephaestus-3D-printer/refs/heads/main/hephaestus-1.2_journal.md"
   file_name: "Hephaestus-1.2.md"

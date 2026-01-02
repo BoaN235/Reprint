@@ -1,7 +1,7 @@
 ---
 layout: "printer"
 title: "Hephaestus-1V2"
-description: "Compleate redesign of Hephaestus-1"
+description: "Compleate redesign of Hephaestus-1.1"
 printer_id: "Hephaestus-1V2"
 permalink: "/printers/Hephaestus-1V2/"
 repository: "https://raw.githubusercontent.com/BoaN235/hephaestus-3D-printer/refs/heads/main/hephaestus-1.2_journal.md"
