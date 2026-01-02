@@ -6,11 +6,11 @@
 #   repository: "https://raw.githubusercontent.com/your_discord_username/repo_name/refs/heads/main/Journal.md"
 #   file_name: "name.md"
 
-Hte_hotend_squared: 
-  title: "Hte_hotend_squared"
+Hte_Hotend_Squared: 
+  title: "Hte_Hotend_Squared"
   description: "toolhead attacthment for add laser cutting"
   repository: "https://raw.githubusercontent.com/Rikhav21/Printer-Mod/refs/heads/main/Journal.md"
-  file_name: "Hte_hotend_squared.md"
+  file_name: "Hte_Hotend_Squared.md"
 
 
 Hephaestus-1V2: 
