@@ -2,8 +2,8 @@
 layout: "printer"
 title: "Hte_hotend_squared"
 description: "toolhead attacthment for add laser cutting"
-printer_id: "hte_hotend_squared"
-permalink: "/printers/hte_hotend_squared/"
+printer_id: "Hte_hotend_squared"
+permalink: "/printers/Hte_hotend_squared/"
 repository: "https://raw.githubusercontent.com/Rikhav21/Printer-Mod/refs/heads/main/Journal.md"
 ---
 # Laser cutter 
