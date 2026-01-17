@@ -237,15 +237,9 @@ table {
     height: 100%;
     overflow: auto; /* allow scrolling inside the console */
     max-width: 100%;
-    /* Hide scrollbar visuals while preserving scrollability */
-    -ms-overflow-style: none;      /* IE and Edge */
-    scrollbar-width: none;         /* Firefox */
+
 }
-.console-content::-webkit-scrollbar { /* Chrome, Safari, Opera */
-    width: 0;
-    height: 0;
-    display: none;
-}
+
 /* (reverted recent fixed table and content constraints) */
 
 .navbar-side-brand::after {

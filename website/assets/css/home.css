@@ -28,3 +28,28 @@
         max-width: 100%;
     }
 }
+.console-content {
+  margin: 0;
+  padding: 10px;
+}
+
+.console-content h2 {
+  margin-top: 0;
+}
+
+.guide-fragment {
+  padding: 8px;
+}
+
+.guide-fragment h2 {
+  margin-top: 0;
+}
+
+.ideas-list a {
+  color: orange;
+  font-size: large;
+}
+
+.ideas-list a:hover {
+  text-decoration: underline;
+}
